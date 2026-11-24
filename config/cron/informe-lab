@@ -1,0 +1,4 @@
+# Informe HTML de estado de srv-ubuntu-lab, cada 5 minutos
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+*/5 * * * *  root  /usr/local/bin/informe-lab.sh

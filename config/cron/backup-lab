@@ -1,0 +1,7 @@
+# Copia de seguridad diaria de srv-ubuntu-lab
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# min hora dia mes dia_semana usuario comando
+30 2 * * *   root  /usr/local/bin/backup-lab.sh
+# La VM suele estar apagada de noche: copia también 5 minutos después de cada arranque
+@reboot      root  sleep 300 && /usr/local/bin/backup-lab.sh

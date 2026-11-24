@@ -1,0 +1,26 @@
+# Laboratorio srv-ubuntu-lab - Planificador + informe de estado
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+
+    root /var/www/planificador;
+    index index.html;
+    server_tokens off;
+
+    access_log /var/log/nginx/planificador.access.log;
+    error_log  /var/log/nginx/planificador.error.log;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Informe de estado del servidor (generado por informe-lab.sh)
+    location /estado/ {
+        alias /var/www/estado/;
+    }
+
+    # Seguridad: ocultos (.git), código de servidor y scripts de claves
+    location ~ /\. { deny all; }
+    location ~* (\.sql|\.ts|generar-claves-vapid\.js)$ { deny all; }
+}

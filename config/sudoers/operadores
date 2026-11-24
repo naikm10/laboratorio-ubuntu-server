@@ -1,0 +1,2 @@
+# Grupo operadores: solo puede actualizar el sistema
+%operadores ALL=(root) /usr/bin/apt update, /usr/bin/apt upgrade, /usr/bin/apt upgrade -y
